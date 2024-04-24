@@ -9,6 +9,7 @@ import java.util.List;
 
 import bean.School;
 
+//𠮷田くんのコードきれい
 public class ClassNumDao extends Dao {
 	/**
 	 * filterメソッド 学校を指定してクラス番号の一覧を取得する
