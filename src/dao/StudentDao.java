@@ -214,7 +214,6 @@ public class StudentDao extends Dao {
 
 		return list;
 	}
-
 	public List<Student> filter(School school, boolean isAttend) throws Exception {
 
 		// リストを初期化
