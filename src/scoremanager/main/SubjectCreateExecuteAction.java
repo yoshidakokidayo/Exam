@@ -66,6 +66,6 @@ public class SubjectCreateExecuteAction extends Action {
 			// 登録画面にフォワード
 			req.getRequestDispatcher("SubjectCreate.action").forward(req, res);
 
+		}
 	}
-
 }

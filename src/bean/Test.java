@@ -4,84 +4,87 @@ import java.io.Serializable;
 
 public class Test implements Serializable {
 
-	//保存できるフィールドを設定する
 	/**
-	 * 学生番号:String
+	 * 生徒：Student
 	 */
-	private String STUDENT_NO;
+	private Student student;
 
 	/**
-	 * 科目コード:String
+	 * クラス番号：String
 	 */
-	private String SUBJECT_CD;
+	private String classNum;
 
 	/**
-	 * 学校コード:String
+	 * サブジェクト：Subject
 	 */
-	private String SCHOOL_CD;
+	private Subject subject;
+
 
 	/**
-	 * 回数:int
+	 * 学校：school
 	 */
-	private int NO;
+	private School school;
 
 	/**
-	 * 得点:int
+	 * 番号：no
 	 */
-	private int POINT;
+	private int no;
 
 	/**
-	 * クラス番号:String
+	 * 点数：point
 	 */
-	private String CLASS_NUM;
-
+	private int point;
 
 	//ゲッタとセッタ
-	public String getSTUDENT_NO() {
-		return STUDENT_NO;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setSTUDENT_NO(String STUDENT_NO) {
-		this.STUDENT_NO = STUDENT_NO;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public String getSUBJECT_CD() {
-		return SUBJECT_CD;
+	public String getClassNum() {
+		return classNum;
 	}
 
-	public void setSUBJECT_CD(String SUBJECT_CD) {
-		this.SUBJECT_CD = SUBJECT_CD;
+	public void setClassNum(String classNum) {
+		this.classNum = classNum;
 	}
 
-	public String getSCHOOL_CD() {
-		return SCHOOL_CD;
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setSCHOOL_CD(String SCHOOL_CD) {
-		this.SCHOOL_CD = SCHOOL_CD;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
-	public int getNO() {
-		return NO;
+	public School getSchool() {
+		return school;
 	}
 
-	public void setSUBJECT_CD(int NO) {
-		this.NO = NO;
+	public void setSchool(School school) {
+		this.school = school;
 	}
 
-	public int getPOINT() {
-		return POINT;
+	public int getNo() {
+		return no;
 	}
 
-	public void setPOINT(int POINT) {
-		this.POINT = POINT;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
-	public String getCLASS_NUM() {
-		return CLASS_NUM;
+	public int getPoint() {
+		return point;
 	}
 
-	public void setCLASS_NUM(String CLASS_NUM) {
-		this.CLASS_NUM = CLASS_NUM;
+	public void setPoint(int point) {
+		this.point = point;
 	}
+
+
+
 }
+
