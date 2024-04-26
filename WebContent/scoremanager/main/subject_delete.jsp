@@ -12,27 +12,17 @@
 	<c:param name="content">
 		<section>
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報削除</h2>
-			<form action="StudentCreateExecute.action" method="get">
+			<form action="SubjectDelete.action" method="get">
 
 				<div>
-					<label for="cd">科目コード</label><br>
-					<input class="form-control" type="text" id="cd" name="cd" value="${cd }"
-					required maxlength="3" placeholder="科目コードを入力してください" />
-				</div>
-				<div class="mt-2 text-warning">${errors.get("2") }</div>
-				<div class="mt-2 text-warning">${errors.get("1") }</div>
-				<div>
-
-					<label for="name">科目名</label><br>
-					<input class="form-control" type="text" id="name" name="name" value="${name }"
-					required maxlength="30" placeholder="氏名を入力してください" />
+					<p>「${name }（${cd }）」を削除してもよろしいですか</p>
 				</div>
 
 				<div class="mx-auto py-2">
-					<button class="btn btn-primary" id="create-button">登録</button>
+					<button class="btn btn-danger" value="削除">削除</button>
 				</div>
 			</form>
-			<a href="StudentList.action">戻る</a>
+			<a href="SubjectList.action">戻る</a>
 		</section>
 	</c:param>
 </c:import>

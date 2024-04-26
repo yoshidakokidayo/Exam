@@ -32,7 +32,7 @@
 					<button class="btn btn-primary" id="create-button">登録</button>
 				</div>
 			</form>
-			<a href="StudentList.action">戻る</a>
+			<a href="SubjectList.action">戻る</a>
 		</section>
 	</c:param>
 </c:import>
