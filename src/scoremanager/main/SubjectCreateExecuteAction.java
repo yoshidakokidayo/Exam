@@ -3,12 +3,13 @@ package scoremanager.main;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
+import dao.SubjectDao;
 import tool.Action;
 
 public class SubjectCreateExecuteAction extends Action {
@@ -20,8 +21,8 @@ public class SubjectCreateExecuteAction extends Action {
 		//ローカル変数宣言1
 		HttpSession session = req.getSession(); // セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");
-		String subject_cd = "";
-		String subject_name = "";
+		String subject_cd = ""; //入力された科目
+		String subject_name = ""; //入力された科目名
 		Subject subject = new Subject();
 		SubjectDao subjectDao = new SubjectDao();
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
@@ -39,7 +40,7 @@ public class SubjectCreateExecuteAction extends Action {
 			// リクエストにエラーメッセージをセット
 			req.setAttribute("errors", errors);
 		} else {
-			if (subjectDao.get(subject_cd) != null) { // 科目コードが重複している場合
+			if (subjectDao.get(subject_cd , teacher.getSchool()) != null) { // 科目コードが重複している場合
 				errors.put("2", "科目コードが重複しています");
 				// リクエストにエラーメッセージをセット
 				req.setAttribute("errors", errors);
