@@ -7,84 +7,62 @@ import java.io.Serializable;
 public class TestListStudent implements Serializable {
 
 	/**
-	 * 学生番号：String
+	 * 科目名：String
 	 */
-	private String no;
+	private String subjectName;
 
 	/**
-	 * 学生名：String
+	 * 科目コード：String
 	 */
-	private String name;
+	private String subjectCd;
 
 	/**
-	 * 入学年度：int
+	 * 合計：int
 	 */
-	private int entYear;
+	private int num;
 
 	/**
-	 * クラス番号：String
+	 * 点数：int
 	 */
-	private String classNum;
+	private String point;
 
-	/**
-	 * 在学フラグ：boolean
-	 */
-	private boolean isAttend;
-
-	/**
-	 * 学校：school
-	 */
-	private School school;
 
 	/**
 	 * ゲッタ・セッタ
 	 */
-	public String getNo() {
-		return no;
+
+	public String getSubjectName() {
+		return subjectName;
 	}
 
-	public void setNo(String no) {
-		this.no = no;
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
 	}
 
-	public String getName() {
-		return name;
+	public String getSubjectCd() {
+		return subjectCd;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSubjectCd(String subjectCd) {
+		this.subjectCd = subjectCd;
 	}
 
-	public int getEntYear() {
-		return entYear;
+	public int getNum() {
+		return num;
 	}
 
-	public void setEntYear(int entYear) {
-		this.entYear = entYear;
+	public void setNum(int num) {
+		this.num = num;
 	}
 
-	public String getClassNum() {
-		return classNum;
+	public String getPoint() {
+		return point;
 	}
 
-	public void setClassNum(String classNum) {
-		this.classNum = classNum;
+	public void setPoint(String point) {
+		this.point = point;
 	}
 
-	public boolean isAttend() {
-		return isAttend;
-	}
 
-	public void setAttend(boolean isAttend) {
-		this.isAttend = isAttend;
-	}
-
-	public School getSchool() {
-		return school;
-	}
-
-	public void setSchool(School school) {
-		this.school = school;
-	}
 
 }
