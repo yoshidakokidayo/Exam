@@ -5,44 +5,48 @@ import java.io.Serializable;
 public class Subject implements Serializable {
 
 	/**
-	 * 学校コード:String
+	 * 科目コード:cd
 	 */
-	private String SCHOOL_CD;
-
-	/**
-	 * 科目コード:String
-	 */
-	private String CD;
+	private String cd;
 
 	/**
 	 * 科目名:String
 	 */
-	private String NAME;
+	private String name;
+
+	/**
+	 * 学校:School
+	 */
+	private School school;
+
 
 	/**
 	 * ゲッター・セッター
 	 */
-	public String getSCHOOL_CD() {
-		return SCHOOL_CD;
+	public String getCd() {
+		return cd;
 	}
 
-	public void setSCHOOL_CD(String SCHOOL_CD) {
-		this.SCHOOL_CD = SCHOOL_CD;
+	public void setCd(String cd) {
+		this.cd = cd;
 	}
 
-	public String getCD() {
-		return CD;
+	public String getName() {
+		return name;
 	}
 
-	public void setCD(String CD) {
-		this.CD = CD;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNAME() {
-		return NAME;
+	public School getSchool() {
+		return school;
 	}
 
-	public void setNAME(String NAME) {
-		this.NAME = NAME;
+	public void setSchool(School school) {
+		this.school = school;
 	}
+
+
+
 }
