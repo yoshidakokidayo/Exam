@@ -12,7 +12,7 @@
 	<c:param name="content">
 		<section>
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
-			<form action="StudentCreateExecute.action" method="get">
+			<form action="SubjectCreateExecute.action" method="get">
 
 				<div>
 					<label for="cd">科目コード</label><br>
@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="mx-auto py-2">
-					<button class="btn btn-secondary" id="create-button" name="end">登録して終了</button>
+					<button class="btn btn-primary" id="create-button">登録</button>
 				</div>
 			</form>
 			<a href="StudentList.action">戻る</a>
