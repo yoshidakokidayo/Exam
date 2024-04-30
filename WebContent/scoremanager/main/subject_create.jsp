@@ -25,7 +25,7 @@
 
 					<label for="name">科目名</label><br>
 					<input class="form-control" type="text" id="name" name="name" value="${name }"
-					required maxlength="30" placeholder="氏名を入力してください" />
+					required maxlength="30" placeholder="科目名を入力してください" />
 				</div>
 
 				<div class="mx-auto py-2">
