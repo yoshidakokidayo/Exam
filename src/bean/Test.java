@@ -19,7 +19,6 @@ public class Test implements Serializable {
 	 */
 	private Subject subject;
 
-
 	/**
 	 * 学校：school
 	 */

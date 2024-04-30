@@ -26,7 +26,7 @@ public class SubjectListAction extends Action {
 		List<Subject>list = subjectDao.filter(teacher.getSchool());
 
 		//レスポンス値をセット6
-		req.setAttribute("list",list);
+		req.setAttribute("subject",list);
 
 		// JSPへフォワード 7
 		req.getRequestDispatcher("subject_list.jsp").forward(req, res);
