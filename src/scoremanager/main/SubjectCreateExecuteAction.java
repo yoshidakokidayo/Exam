@@ -35,8 +35,8 @@ public class SubjectCreateExecuteAction extends Action {
 		// なし
 
 		// ビジネスロック4
-		if (subject_cd.length() == 3){ //科目コードが3文字でない場合
-			errors.put("1", "入学年度を選択してください");
+		if (subject_cd.length() != 3){ //科目コードが3文字でない場合
+			errors.put("1", "科目コードは3文字で入力してください");
 			// リクエストにエラーメッセージをセット
 			req.setAttribute("errors", errors);
 		} else {
@@ -48,6 +48,7 @@ public class SubjectCreateExecuteAction extends Action {
 				// subjectにセット
 				subject.setCd(subject_cd);
 				subject.setName(subject_name);
+				subject.setSchool(teacher.getSchool());
 				// saveメソッドで情報を登録
 				subjectDao.save(subject);
 			}
