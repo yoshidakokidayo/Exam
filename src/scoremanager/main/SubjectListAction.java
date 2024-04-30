@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
 import tool.Action;
@@ -23,13 +22,13 @@ public class SubjectListAction extends Action {
 		SubjectDao subjectDao = new SubjectDao(); // 科目Dao
 
 		//DBからデータ取得3
-		List<Subject>list = subjectDao.filter(teacher.getSchool());
+		List<String>list = subjectDao.filter(teacher.getSchool());
 
 		//レスポンス値をセット6
 		req.setAttribute("list",list);
 
 		// JSPへフォワード 7
-		req.getRequestDispatcher("subject_list.jsp").forward(req, res);
+		req.getRequestDispatcher("subject_create_done.jsp").forward(req, res);
 
 	}
 
