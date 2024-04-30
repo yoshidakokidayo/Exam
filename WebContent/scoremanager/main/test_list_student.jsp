@@ -53,17 +53,6 @@
 						</select>
 					</div>
 
-					<!-- <div class="col-2">
-						<label class="form-label" for="student-f4-select">回数</label>
-						<select class="form-select" id="student-f4-select" name="f4">
-							<option value="0">--------</option>
-							<c:forEach var="num" items="${class_num_set }">
-								<%-- 現在のnumと選択されていたf4が一致していた場合selectedを追記 --%>
-								<option value="${num }" <c:if test="${num==f4 }">selected</c:if>>${num }</option>
-							</c:forEach>
-						</select>
-					</div> -->
-
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
@@ -102,7 +91,7 @@
 							<th>１回</th>
 							<th>２回</th>
 						</tr>
-						<c:forEach var="student" items="${students }">
+						<c:forEach var="student" items="${student }">
 							<tr>
 								<td>${student.entYear }</td>
 								<td>${test.classNum }</td>
