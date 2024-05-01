@@ -1,4 +1,4 @@
-<!-- 学生別成績一覧JSP -->
+<!-- 科目別成績一覧JSP -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -79,30 +79,51 @@
 			</form>
 
 
-			<!-- 学生別一覧表示 -->
+			<!-- 科目別一覧表示 -->
 			<c:choose>
 				<c:when test="${subject.size()>0 }">
-					<div>氏名：${student.name()"("student.no()")" }</div>
+					<div>科目：${subject.name() }</div>
 					<table class="table table-hover">
 						<tr>
-							<th>科目名</th>
-							<th>科目コード</th>
-							<th>回数</th>
-							<th>点数</th>
+							<th>入学年度</th>
+							<th>クラス</th>
+							<th>学生番号</th>
+							<th>氏名</th>
+							<th>１回</th>
+							<th>２回</th>
 						</tr>
-						<c:forEach var="test_student" items="${test_student }">
+						<c:forEach var="test_subject" items="${test_subject }">
 							<tr>
-								<td>${subject.name }</td>
-								<td>${test.subject_cd }</td>
-								<td>${test.no }</td>
-								<td>${test.point }</td>
+								<td>${student.entYear }</td>
+								<td>${test.classNum }</td>
+								<td>${test.student_no }</td>
+								<td>${student.name }</td>
+								<td>
+									<c:choose>
+										<c:when test="${test.no == 1 }">
+											${test.point }
+										</c:when>
+										<c:otherwise>
+											-
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${test.no == 2 }">
+											${test.point }
+										</c:when>
+										<c:otherwise>
+											-
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
 				</c:when>
 				<c:otherwise>
-					<div>氏名：${student.name()"("student.no()")" }</div>
-					<div>成績情報が存在しませんでした</div>
+					<div>学生情報が存在しませんでした</div>
 				</c:otherwise>
 			</c:choose>
 		</section>
