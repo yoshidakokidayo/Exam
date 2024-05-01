@@ -22,7 +22,7 @@
 					<label for="name">科目名</label><br>
 					<input class="form-control" type="text" id="name" name="name" value="${name }" required maxlength="20" />
 				</div>
-				<div class="mt-2 text-warning">${errors.get(" ") }</div>
+				<div class="mt-2 text-warning">${errors.get("1") }</div>
 
 				<div class="mx-auto py-2">
 					<input class="btn btn-primary" type="submit" value="変更"/>

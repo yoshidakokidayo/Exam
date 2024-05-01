@@ -82,7 +82,7 @@
 			<!-- 学生別一覧表示 -->
 			<c:choose>
 				<c:when test="${subject.size()>0 }">
-					<div>氏名：${subject.name() }</div>
+					<div>氏名：${student.name()"("student.no()")" }</div>
 					<table class="table table-hover">
 						<tr>
 							<th>科目名</th>
@@ -90,28 +90,19 @@
 							<th>回数</th>
 							<th>点数</th>
 						</tr>
-						<c:forEach var="student" items="${student }">
+						<c:forEach var="test_student" items="${test_student }">
 							<tr>
-								<td>${student.entYear }</td>
-								<td>${test.classNum }</td>
-								<td>${test.student_no }</td>
-								<td>${student.name }</td>
-								<td>
-									<c:choose>
-										<c:when test="${test.no == 1 }">
-											${test.point }
-										</c:when>
-										<c:otherwise>
-											-
-										</c:otherwise>
-									</c:choose>
-								</td>
+								<td>${subject.name }</td>
+								<td>${test.subject_cd }</td>
+								<td>${test.no }</td>
+								<td>${test.point }</td>
 							</tr>
 						</c:forEach>
 					</table>
 				</c:when>
 				<c:otherwise>
-					<div>学生情報が存在しませんでした</div>
+					<div>氏名：${student.name()"("student.no()")" }</div>
+					<div>成績情報が存在しませんでした</div>
 				</c:otherwise>
 			</c:choose>
 		</section>

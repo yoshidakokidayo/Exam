@@ -92,7 +92,7 @@
 							<th>１回</th>
 							<th>２回</th>
 						</tr>
-						<c:forEach var="subject" items="${subject }">
+						<c:forEach var="test_subject" items="${test_subject }">
 							<tr>
 								<td>${student.entYear }</td>
 								<td>${test.classNum }</td>
@@ -101,6 +101,16 @@
 								<td>
 									<c:choose>
 										<c:when test="${test.no == 1 }">
+											${test.point }
+										</c:when>
+										<c:otherwise>
+											-
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${test.no == 2 }">
 											${test.point }
 										</c:when>
 										<c:otherwise>
