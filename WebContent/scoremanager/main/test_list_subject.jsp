@@ -1,4 +1,4 @@
-<!-- 学生別成績一覧JSP -->
+<!-- 科目別成績一覧JSP -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -79,18 +79,20 @@
 			</form>
 
 
-			<!-- 学生別一覧表示 -->
+			<!-- 科目別一覧表示 -->
 			<c:choose>
 				<c:when test="${subject.size()>0 }">
-					<div>氏名：${subject.name() }</div>
+					<div>科目：${subject.name() }</div>
 					<table class="table table-hover">
 						<tr>
-							<th>科目名</th>
-							<th>科目コード</th>
-							<th>回数</th>
-							<th>点数</th>
+							<th>入学年度</th>
+							<th>クラス</th>
+							<th>学生番号</th>
+							<th>氏名</th>
+							<th>１回</th>
+							<th>２回</th>
 						</tr>
-						<c:forEach var="student" items="${student }">
+						<c:forEach var="subject" items="${subject }">
 							<tr>
 								<td>${student.entYear }</td>
 								<td>${test.classNum }</td>
