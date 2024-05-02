@@ -101,7 +101,7 @@
 					</table>
 				</c:when>
 				<c:otherwise>
-					<div>氏名：${student.name()"("student.no()")" }</div>
+					<div>氏名：${student.name()}</div>
 					<div>成績情報が存在しませんでした</div>
 				</c:otherwise>
 			</c:choose>
