@@ -72,23 +72,26 @@
 				</div>
 			</form>
 			<c:choose>
-				<c:when test="${students.size()>0 }">
+			
+			<!-- イミフ -->
+				<c:when test="${testlist.size()>0 }">
 					<div>科目：${students.size() }件</div>
+					<!-- 表示するテーブルの作成 -->
 					<table class="table table-hover">
 						<tr>
 							<th>入学年度</th>
+							<th class="text-center">クラス</th>
 							<th>学生番号</th>
 							<th>氏名</th>
-							<th>クラス</th>
-							<th class="text-center">在学中</th>
+							<th>点数</th>
 							<th></th>
 							<th></th>
 						</tr>
 						<c:forEach var="student" items="${students }">
 							<tr>
 								<td>${student.entYear }</td>
-								<td>${student.no }</td>
-								<td>${student.name }</td>
+								<td>${test.no }</td>
+								<td>${test.student_no }</td>
 								<td>${student.classNum }</td>
 								<td class="text-center">
 									<%-- 在学フラグがたっている場合「◯」それは以外は「×」を表示 --%>
