@@ -251,11 +251,13 @@ public class TestDao extends Dao {
 
 	public boolean delete(List<Test> list) throws Exception {
 
+		// 機能なし
 		return true;
 	}
 
 	private boolean delete(Test test, Connection connection) throws Exception {
 
+		// 機能なし
 		return true;
 	}
 }
