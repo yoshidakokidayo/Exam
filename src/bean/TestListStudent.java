@@ -24,7 +24,7 @@ public class TestListStudent implements Serializable {
 	/**
 	 * 点数：int
 	 */
-	private String point;
+	private int point;
 
 
 	/**
@@ -55,11 +55,11 @@ public class TestListStudent implements Serializable {
 		this.num = num;
 	}
 
-	public String getPoint() {
+	public int getPoint() {
 		return point;
 	}
 
-	public void setPoint(String point) {
+	public void setPoint(int point) {
 		this.point = point;
 	}
 

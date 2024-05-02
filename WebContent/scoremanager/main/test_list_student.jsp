@@ -82,7 +82,7 @@
 			<!-- 学生別一覧表示 -->
 			<c:choose>
 				<c:when test="${subject.size()>0 }">
-					<div>氏名：${student.name()"("student.no()")" }</div>
+					<div>氏名：${student.name() }</div>
 					<table class="table table-hover">
 						<tr>
 							<th>科目名</th>
