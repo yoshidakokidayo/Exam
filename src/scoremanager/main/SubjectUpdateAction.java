@@ -41,7 +41,7 @@ public class SubjectUpdateAction extends Action {
 		req.setAttribute("subject_name", subject_name);
 
 		// JSPへフォワード 7
-		req.getRequestDispatcher("sbject_update.jsp").forward(req, res);
+		req.getRequestDispatcher("subject_update.jsp").forward(req, res);
 
 	}
 
