@@ -78,9 +78,35 @@ public class TestListSubject implements Serializable {
 		this.points = points;
 	}
 
+	/**
+	 * キー（テスト回数）から値（点数）をゲットするメソッド
+	 * @param key テスト回数：int
+	 * @return 点数（String）
+	 */
+	public String getPoint(int key) {
 
+		// Mapの初期化
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		// pointsフィールドから値をゲット
+		map = getPoints();
+		// キーのテスト回数から値の点数を返却
+		return Integer.toString(map.get(key));
+	}
 
+	/**
+	 * pointsフィールドにMapでテスト回数と点数をセットするメソッド
+	 * @param key テスト回数：int
+	 * @param value 点数：int
+	 */
+	public void putPoint(int key, int value) {
 
+		// Mapの初期化
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		// mapにテスト回数と点数を格納
+		map.put(key, value);
+		// pointsフィールドにセット
+		setPoints(map);
+	}
 
 
 }
