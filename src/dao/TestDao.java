@@ -255,6 +255,7 @@ public class TestDao extends Dao {
 		return true;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean delete(Test test, Connection connection) throws Exception {
 
 		// 機能なし
