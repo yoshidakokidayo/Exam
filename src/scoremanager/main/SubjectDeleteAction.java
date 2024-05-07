@@ -41,7 +41,7 @@ public class SubjectDeleteAction extends Action {
 		req.setAttribute("subject_name", subject_name);
 
 		// JSPへフォワード 7
-		req.getRequestDispatcher("sbject_delete.jsp").forward(req, res);
+		req.getRequestDispatcher("subject_delete.jsp").forward(req, res);
 
 	}
 
