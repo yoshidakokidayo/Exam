@@ -72,7 +72,7 @@
 				</div>
 			</form>
 			<c:choose>
-			
+
 			<!-- イミフ -->
 				<c:when test="${testlist.size()>0 }">
 					<div>科目：${students.size() }件</div>
