@@ -14,9 +14,6 @@
 		<section>
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報削除</h2>
 
-			<%-- <div class="my-2 text-end px-4">
-				<a href="StudentCreate.action">新規登録</a>
-			</div> --%>
 			<form method="get">
 				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
 
@@ -28,7 +25,7 @@
 							<option value="0">--------</option>
 							<c:forEach var="year" items="${ent_year_set }">
 								<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
-								<option value="${year }" <c:if test="${year==f1 }">selected</c:if>>${year }</option>
+								<option value="${year }" <c:if test="${year==entYear }">selected</c:if>>${year }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -39,7 +36,7 @@
 							<option value="0">--------</option>
 							<c:forEach var="num" items="${class_num_set }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
+								<option value="${num }" <c:if test="${num==classNum }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -50,7 +47,7 @@
 							<option value="0">--------</option>
 							<c:forEach var="subject.cd" items="${subject_cd_set }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.cd }</option>
+								<option value="${subject.cd }" <c:if test="${subject.cd==subject }">selected</c:if>>${subject.cd }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -61,7 +58,7 @@
 							<option value="0">--------</option>
 							<c:forEach var="num" items="${class_num_set }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
+								<option value="${num }" <c:if test="${num==count }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
 					</div>
