@@ -1,6 +1,5 @@
 package scoremanager.main;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,6 @@ import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
-//𠮷田
 public class TestRegistAction extends Action {
 
 	@Override
@@ -33,7 +31,6 @@ public class TestRegistAction extends Action {
 		String classNum = ""; // 入力されたクラス番号
 		String subject = ""; //入力された科目
 		int count =0; //入力された回数
-		LocalDate todaysDate = LocalDate.now(); // LocalDateインスタンスを取得
 		ClassNumDao cNumDao = new ClassNumDao(); // クラス番号Dao
 		SubjectDao subjectDao = new SubjectDao(); //科目Dao
 		TestDao testDao = new TestDao(); // テストDao
