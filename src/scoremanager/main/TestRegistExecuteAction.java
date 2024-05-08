@@ -1,6 +1,5 @@
 package scoremanager.main;
 
-//𠮷田
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +16,7 @@ import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
-public class TestRegisExecuteAction extends Action {
+public class TestRegistExecuteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -33,6 +32,7 @@ public class TestRegisExecuteAction extends Action {
 		SubjectDao subjectDao = new SubjectDao();
 		TestDao testDao = new TestDao();
 		List<Test> list = new ArrayList<>();
+		int c = 0; // エラーの番号
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		//リクエストパラメーターの取得2
@@ -49,34 +49,50 @@ public class TestRegisExecuteAction extends Action {
 
 			point = Integer.parseInt(req.getParameter("point_" + item));
 
-			// testに学生情報をセット
-			test.setStudent(studentDao.get(item));
-			test.setClassNum(studentDao.get(item).getClassNum());
-			test.setSubject(subjectDao.get(subject, teacher.getSchool()));
-			test.setSchool(teacher.getSchool());
-			test.setNo(count);
-			test.setPoint(point);
-			// リストに格納
-			list.add(test);
+			if (point < 0 || point > 100) { // 得点が0～100の間の数値でない場合
+				errors.put("" + c, "0～100の範囲で入力してください");
+				// リクエストに入学年度をセット
+				req.setAttribute("f1", studentDao.get(item).getEntYear());
+				// リクエストにクラス番号をセット
+				req.setAttribute("f2", studentDao.get(item).getClassNum());
+				// リクエストに科目をセット
+				req.setAttribute("f3", subjectDao.get(subject, teacher.getSchool()));
+				// リクエストに回数をセット
+				req.setAttribute("f4", count);
+				break;
+			} else {
+				// testに学生情報をセット
+				test.setStudent(studentDao.get(item));
+				test.setClassNum(studentDao.get(item).getClassNum());
+				test.setSubject(subjectDao.get(subject, teacher.getSchool()));
+				test.setSchool(teacher.getSchool());
+				test.setNo(count);
+				test.setPoint(point);
+				// リストに格納
+				list.add(test);
+			}
+			// エラーの番号
+			c++;
 		}
-		// saveメソッドで情報を登録
-		testDao.save(list);
+
+		if (errors.isEmpty()) { // エラーがなかった場合
+			// saveメソッドで情報を登録
+			testDao.save(list);
+		} else {
+			// リクエストにエラーメッセージをセット
+			req.setAttribute("errors", errors);
+		}
+
 		// レスポンス値をセット 6
-		// リクエストに入学年度をセット
-		req.setAttribute("ent_year", ent_year);
-		// リクエストにクラス番号をセット
-		req.setAttribute("class_num", class_num);
-		// リクエストに学生番号をセット
-		req.setAttribute("no", student_no);
-		// リクエストに氏名をセット
-		req.setAttribute("name", student_name);
-		// リクエストに点数をセット
-		req.setAttribute("score", score);
+		// なし
 
 		// JSPへフォワード 7
 		if (errors.isEmpty()) { // エラーメッセージがない場合
 			// 登録完了画面にフォワード
-			req.getRequestDispatcher("test_regis_done.jsp").forward(req, res);
+			req.getRequestDispatcher("test_regist_done.jsp").forward(req, res);
+		} else {
+			// 成績一覧画面にフォワード
+			req.getRequestDispatcher("TestRegist.action").forward(req, res);
 		}
 	}
 }
