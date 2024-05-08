@@ -46,6 +46,7 @@ public class TestRegistAction extends Action {
 		//DBからデータ取得3
 		List<String>cNumlist = cNumDao.filter(teacherSchool); //クラス情報
 		List<Subject>list = subjectDao.filter(teacherSchool); //科目情報
+
 		if (entYear != 0 || classNum != null || subject != null || count != 0) {
 			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
 			req.setAttribute("testlist", testlist);
