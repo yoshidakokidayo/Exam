@@ -35,8 +35,8 @@ public class SubjectCreateExecuteAction extends Action {
 		// なし
 
 		// ビジネスロック4
-		if (subject_cd.length() == 3){ //科目コードが3文字でない場合
-			errors.put("1", "科目コードを");
+		if (subject_cd.length() != 3){ //科目コードが3文字でない場合
+			errors.put("1", "科目コードを3文字で入力してください");
 			// リクエストにエラーメッセージをセット
 			req.setAttribute("errors", errors);
 		} else {
