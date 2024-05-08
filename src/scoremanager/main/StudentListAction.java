@@ -47,6 +47,10 @@ public class StudentListAction extends Action {
 			// 数値に変換
 			entYear = Integer.parseInt(entYearStr);
 		}
+		if (isAttendStr != null) { // 在学フラグがnullじゃなかった場合
+			// 在学フラグをtrueに変換
+			isAttend = true;
+		}
 		// リストを初期化
 		List<Integer> entYearSet = new ArrayList<>();
 		// 10年前から1年後まで年をリストに追加
