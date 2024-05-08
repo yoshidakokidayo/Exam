@@ -15,7 +15,7 @@
 			<form action="SubjectDelete.action" method="get">
 
 				<div>
-					<p>「${name }（${cd }）」を削除してもよろしいですか</p>
+					<p>「${subject_name }（${subject_cd }）」を削除してもよろしいですか</p>
 				</div>
 
 				<div class="mx-auto py-2">

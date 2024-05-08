@@ -54,7 +54,8 @@
 					</div>
 
 					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="filter-button">検索</button>
+					<input type="hidden" name="f" value="sj">
+						<button class="btn btn-secondary" id="subject-button">検索</button>
 					</div>
 					<div class="mt-2 text-warning">${errors.get("f1") }</div>
 
@@ -72,7 +73,8 @@
 					</div>
 
 					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="create-button">検索</button>
+						<input type="hidden" name="f" value="st">
+						<button class="btn btn-secondary" id="student-button">検索</button>
 					</div>
 
 				</div>
@@ -82,6 +84,9 @@
 				<font color="5accf2">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
 				</font>
 			</p>
+
+			<!-- 画面設計書の画面項目15、16の識別コードの書き方が分からないです！！！！！！！ -->
+			<!-- それに伴って、検索の分け方もわからないです！！！！ -->
 
 			</section>
 	</c:param>
