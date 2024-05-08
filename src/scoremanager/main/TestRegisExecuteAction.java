@@ -1,5 +1,6 @@
 package scoremanager.main;
 
+//𠮷田
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

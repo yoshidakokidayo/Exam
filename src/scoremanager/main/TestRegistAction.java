@@ -18,6 +18,7 @@ import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
+//𠮷田
 public class TestRegistAction extends Action {
 
 	@Override
