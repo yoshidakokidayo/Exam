@@ -34,7 +34,6 @@ public class TestRegistAction extends Action {
 		String subject = ""; //入力された科目
 		int count =0; //入力された回数
 		LocalDate todaysDate = LocalDate.now(); // LocalDateインスタンスを取得
-		int year = todaysDate.getYear(); // 現在の年を取得
 		ClassNumDao cNumDao = new ClassNumDao(); // クラス番号Dao
 		SubjectDao subjectDao = new SubjectDao(); //科目Dao
 		TestDao testDao = new TestDao(); // テストDao
