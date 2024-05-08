@@ -16,6 +16,7 @@ import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
 
+	//𠮷田
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
