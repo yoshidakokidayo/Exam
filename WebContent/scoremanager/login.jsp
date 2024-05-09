@@ -53,7 +53,7 @@
 							<input class="form-control px-5 fs-5" autocomplete="off"
 								id="password-input" maxlength="20" name="password"
 								placeholder="20文字以内の半角英数字でご入力下さい" style="ime-mode: disabled"
-								type="password" required />
+								type="text" value="${password }" required />
 							<label>パスワード</label>
 						</div>
 						<div class="form-check mt-3">
