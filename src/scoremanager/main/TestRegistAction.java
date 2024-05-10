@@ -27,10 +27,12 @@ public class TestRegistAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 
 		//ローカル変数の取得1
-		int entYear = 0; // 入力された入学年度
+		String entYearStr = null; // 入力された入学年度
+		int entYear = 0; // 入学年度
 		String classNum = ""; // 入力されたクラス番号
 		String subject = ""; //入力された科目
-		int count =0; //入力された回数
+		String countStr = null; //入力された回数
+		int count = 0; // 回数
 		ClassNumDao cNumDao = new ClassNumDao(); // クラス番号Dao
 		SubjectDao subjectDao = new SubjectDao(); //科目Dao
 		TestDao testDao = new TestDao(); // テストDao
@@ -38,14 +40,21 @@ public class TestRegistAction extends Action {
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		// リクエストパラメーターの取得 2
-		entYear = Integer.parseInt(req.getParameter("f1"));
+		entYearStr = req.getParameter("f1");
 		classNum = req.getParameter("f2");
 		subject = req.getParameter("f3");
-		count = Integer.parseInt(req.getParameter("f4"));
+		countStr = req.getParameter("f4");
 
 		//DBからデータ取得3
 		List<String>cNumlist = cNumDao.filter(teacherSchool); //クラス情報
 		List<Subject>list = subjectDao.filter(teacherSchool); //科目情報
+
+		if (entYearStr != null) {
+			entYear = Integer.parseInt(entYearStr);
+		}
+		if (countStr != null) {
+			count = Integer.parseInt(countStr);
+		}
 
 		if (entYear != 0 || classNum != null || subject != null || count != 0) {
 			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
