@@ -15,13 +15,13 @@
 			<form action="SubjectUpdateExecute.action" method="get">
 				<div>
 					<label class="mx-auto py-2" for="code">科目コード</label><br>
-					<input class="border border-0 ps-3" type="text" id="code" value="${subject_cd }" readonly />
+					<input class="border border-0 ps-3" type="text" id="code" value="${code }" readonly />
 				</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
 
 				<div class="mx-auto py-2">
 					<label for="name">科目名</label><br>
-					<input class="form-control" type="text" id="name" name="name" value="${subject_name }" required maxlength="20" />
+					<input class="form-control" type="text" id="name" name="name" value="${name }" required maxlength="20" />
 				</div>
 
 
