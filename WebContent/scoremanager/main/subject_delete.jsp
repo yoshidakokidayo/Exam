@@ -12,14 +12,18 @@
 	<c:param name="content">
 		<section>
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報削除</h2>
-			<form action="SubjectDelete.action" method="get">
+			<form action="SubjectDeleteExecute.action" method="get">
 
 				<div>
 					<p>「${subject_name }（${subject_cd }）」を削除してもよろしいですか</p>
 				</div>
 
 				<div class="mx-auto py-2">
-					<button class="btn btn-danger" value="削除">削除</button>
+					<input class="btn btn-danger" type="submit" value="削除"/>
+				</div>
+				<div>
+					<input type="hidden" name="subject_cd" value="${subject_cd }" />
+					<input type="hidden" name="subject_name" value="${subject_name }" />
 				</div>
 			</form>
 			<a href="SubjectList.action">戻る</a>

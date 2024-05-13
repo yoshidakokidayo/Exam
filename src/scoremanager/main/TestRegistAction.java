@@ -56,7 +56,7 @@ public class TestRegistAction extends Action {
 			count = Integer.parseInt(countStr);
 		}
 
-		if (entYear != 0 || classNum != null || subject != null || count != 0) {
+		if (entYear != 0 && classNum != null && subject != null && count != 0) {
 			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
 			req.setAttribute("testlist", testlist);
 		} else {
