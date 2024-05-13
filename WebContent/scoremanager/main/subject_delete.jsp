@@ -22,6 +22,8 @@
 					<button class="btn btn-danger" value="削除">削除</button>
 				</div>
 			</form>
+			<br>
+			<br>
 			<a href="SubjectList.action">戻る</a>
 		</section>
 	</c:param>
