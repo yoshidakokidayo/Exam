@@ -26,6 +26,8 @@
 					<input type="hidden" name="subject_name" value="${subject_name }" />
 				</div>
 			</form>
+			<br>
+			<br>
 			<a href="SubjectList.action">戻る</a>
 		</section>
 	</c:param>

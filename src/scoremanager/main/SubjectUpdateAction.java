@@ -36,9 +36,9 @@ public class SubjectUpdateAction extends Action {
 
 		// レスポンス値をセット 6
 		// リクエストに科目コードをセット
-		req.setAttribute("subject_cd", subject_cd);
+		req.setAttribute("code", subject_cd);
 		// リクエストに科目名をセット
-		req.setAttribute("subject_name", subject_name);
+		req.setAttribute("name", subject_name);
 
 		// JSPへフォワード 7
 		req.getRequestDispatcher("subject_update.jsp").forward(req, res);
