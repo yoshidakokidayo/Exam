@@ -15,11 +15,10 @@
 			<form action="SubjectCreateExecute.action" method="get">
 
 				<div>
-					<label for="cd">科目コード</label><br>
-					<input class="form-control" type="text" id="cd" name="cd" value="${cd }"
+					<label for="code">科目コード</label><br>
+					<input class="form-control" type="text" id="code" value="${code }"
 					required maxlength="3" placeholder="科目コードを入力してください" />
 				</div>
-				<div class="mt-2 text-warning">${errors.get("2") }</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
 				<div>
 
