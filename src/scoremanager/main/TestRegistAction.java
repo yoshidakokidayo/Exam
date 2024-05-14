@@ -1,5 +1,7 @@
 package scoremanager.main;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,8 @@ public class TestRegistAction extends Action {
 		SubjectDao subjectDao = new SubjectDao(); //科目Dao
 		TestDao testDao = new TestDao(); // テストDao
 		School teacherSchool = teacher.getSchool(); // テスト情報
+		LocalDate todaysDate = LocalDate.now(); // LocalDateインスタンスを取得
+		int year = todaysDate.getYear(); // 現在の年を取得
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		// リクエストパラメーターの取得 2
@@ -49,6 +53,7 @@ public class TestRegistAction extends Action {
 		List<String>cNumlist = cNumDao.filter(teacherSchool); //クラス情報
 		List<Subject>list = subjectDao.filter(teacherSchool); //科目情報
 
+		//ビジネスロジック4
 		if (entYearStr != null) {
 			entYear = Integer.parseInt(entYearStr);
 		}
@@ -56,9 +61,25 @@ public class TestRegistAction extends Action {
 			count = Integer.parseInt(countStr);
 		}
 
+		// リストを初期化
+		List<Integer> entYearSet = new ArrayList<>();
+		// 10年前から10年後まで年をリストに追加
+		for (int i = year - 10; i < year + 11; i++) {
+			entYearSet.add(i);
+		}
+
+		List<Integer> countSet = new ArrayList<>();
+		// 2回まで回数をセット
+		for (int i = 1; i < 3 ; i++) {
+			countSet.add(i);
+		}
+
+		// 検索
 		if (entYear != 0 && classNum != null && subject != null && count != 0) {
 			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
 			req.setAttribute("testlist", testlist);
+		} else if (entYear == 0 && classNum == null && subject == null && count == 0) {
+
 		} else {
 			errors.put("1", "入学年度とクラスと科目と回数を選択してください");
 			req.setAttribute("errors", errors);
@@ -74,10 +95,14 @@ public class TestRegistAction extends Action {
 		req.setAttribute("f3", subject);
 		//リクエストに回数をセット
 		req.setAttribute("f4", count);
+		//リクエストに入学年度リストをセット
+		req.setAttribute("entYearList", entYearSet);
 		//リクエストにクラス情報リストをセット
-		req.setAttribute("cNumlist", cNumlist);
+		req.setAttribute("cNumList", cNumlist);
 		//リクエストに科目情報リストをセット
 		req.setAttribute("list", list);
+		//リクエストに回数リストをセット
+		req.setAttribute("countList", countSet);
 
 		//jspへのフォワード7
 		req.getRequestDispatcher("test_regist.jsp").forward(req , res);

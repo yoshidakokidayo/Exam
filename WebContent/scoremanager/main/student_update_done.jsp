@@ -12,6 +12,9 @@
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2">学生情報変更</h2>
 			<div id="wrap_box">
 				<p class="text-center" style="background-color:#8cc3a9">変更が完了しました</p>
+				<br>
+				<br>
+				<br>
 				<a href="StudentList.action">学生一覧</a>
 			</div>
 		</div>

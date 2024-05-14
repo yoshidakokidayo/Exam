@@ -23,9 +23,9 @@
 						<label class="form-label" for="student-f1-select">入学年度</label>
 						<select class="form-select" id="student-f1-select" name="f1">
 							<option value="0">--------</option>
-							<c:forEach var="year" items="${ent_year_set }">
+							<c:forEach var="year" items="${entYearList }">
 								<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
-								<option value="${year }" <c:if test="${year==entYear }">selected</c:if>>${year }</option>
+								<option value="${year }" <c:if test="${year==f1 }">selected</c:if>>${year }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -34,9 +34,9 @@
 						<label class="form-label" for="student-f2-select">クラス</label>
 						<select class="form-select" id="student-f2-select" name="f2">
 							<option value="0">--------</option>
-							<c:forEach var="num" items="${class_num_set }">
+							<c:forEach var="num" items="${cNumList }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${num }" <c:if test="${num==classNum }">selected</c:if>>${num }</option>
+								<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -45,9 +45,9 @@
 						<label class="form-label" for="student-f2-select">科目</label>
 						<select class="form-select" id="student-f2-select" name="f3">
 							<option value="0">--------</option>
-							<c:forEach var="subject.cd" items="${subject_cd_set }">
+							<c:forEach var="subject" items="${list }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${subject.cd }" <c:if test="${subject.cd==subject }">selected</c:if>>${subject.cd }</option>
+								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.name }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -56,9 +56,9 @@
 						<label class="form-label" for="student-f2-select">回数</label>
 						<select class="form-select" id="student-f2-select" name="f4">
 							<option value="0">--------</option>
-							<c:forEach var="num" items="${class_num_set }">
+							<c:forEach var="num" items="${countList }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
-								<option value="${num }" <c:if test="${num==count }">selected</c:if>>${num }</option>
+								<option value="${num }" <c:if test="${num==f4 }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -66,14 +66,13 @@
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
-					<div class="mt-2 text-warning">${errors.get("f1") }</div>
+					<div class="mt-2 text-warning">${errors.get("1") }</div>
 				</div>
 			</form>
+
 			<c:choose>
-
-
 				<c:when test="${testlist.size()>0 }">
-					<div>科目：${students.size() }件</div>
+					<div>科目：${f3 }（${f4 }回）</div>
 					<!-- 表示するテーブルの作成 -->
 					<table class="table table-hover">
 						<tr>
@@ -91,11 +90,11 @@
 								<td>${test.no }</td> <!-- クラス -->
 								<td>${test.student_no }</td> <!-- 学生番号 -->
 								<td>${student.name }</td> <!-- 氏名 -->
-								<td>${test.point }</td> <!-- 得点 -->
+								<td><input type="text" value="${test.point }"></td> <!-- 得点 -->
 								<td>
 								<div class="">
-								<label for="point_${学生番号} }">得点</label>
-								<input type="text" id="point_${学生番号} }" name="point_${学生番号} }"  />
+								<label for="point_${学生番号} ">得点</label>
+								<input type="text" id="point_${学生番号} " name="point_${学生番号} "  />
 								</div>
 								</td>
 							</tr>
@@ -105,7 +104,6 @@
 						<button class="btn btn-secondary" id="filter-button">登録して終了</button>
 					</div>
 				</c:when>
-
 			</c:choose>
 		</section>
 	</c:param>

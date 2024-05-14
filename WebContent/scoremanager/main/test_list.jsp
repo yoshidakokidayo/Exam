@@ -35,7 +35,7 @@
 						<label class="form-label" for="student-f2-select">クラス</label>
 						<select class="form-select" id="student-f2-select" name="f2">
 							<option value="0">--------</option>
-							<c:forEach var="num" items="${class_num_set }">
+							<c:forEach var="num" items="${cNumlist }">
 								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
 								<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
 							</c:forEach>
@@ -46,7 +46,7 @@
 						<label class="form-label" for="student-f3-select">科目</label>
 						<select class="form-select" id="student-f3-select" name="f3">
 							<option value="0">--------</option>
-							<c:forEach var="subject.cd" items="${class_subject.cd_set }">
+							<c:forEach var="subject.cd" items="${list } ">
 								<%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
 								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.cd }</option>
 							</c:forEach>

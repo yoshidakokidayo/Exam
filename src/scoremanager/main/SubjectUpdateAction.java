@@ -36,7 +36,7 @@ public class SubjectUpdateAction extends Action {
 
 		// レスポンス値をセット 6
 		// リクエストに科目コードをセット
-		req.setAttribute("code", subject_cd);
+		req.setAttribute("cd", subject_cd);
 		// リクエストに科目名をセット
 		req.setAttribute("name", subject_name);
 

@@ -15,7 +15,7 @@
 			<form action="SubjectUpdateExecute.action" method="get">
 				<div>
 					<label class="mx-auto py-2" for="code">科目コード</label><br>
-					<input class="border border-0 ps-3" type="text" id="code" value="${code }" readonly />
+					<input class="border border-0 ps-3" type="text" id="cd" name="cd" value="${cd }" readonly />
 				</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
 

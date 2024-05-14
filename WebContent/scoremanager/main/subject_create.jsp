@@ -16,7 +16,7 @@
 
 				<div>
 					<label for="code">科目コード</label><br>
-					<input class="form-control" type="text" id="code" value="${code }"
+					<input class="form-control" type="text" name="cd" id="cd" value="${cd }"
 					required maxlength="3" placeholder="科目コードを入力してください" />
 				</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
