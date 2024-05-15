@@ -20,6 +20,7 @@
 					required maxlength="3" placeholder="科目コードを入力してください" />
 				</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
+				<div class="mt-2 text-warning">${errors.get("2") }</div>
 				<div>
 
 					<label for="name">科目名</label><br>
