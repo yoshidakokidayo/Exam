@@ -68,6 +68,7 @@ public class TestRegistAction extends Action {
 			entYearSet.add(i);
 		}
 
+		// リストを初期化
 		List<Integer> countSet = new ArrayList<>();
 		// 2回まで回数をセット
 		for (int i = 1; i < 3 ; i++) {
@@ -75,13 +76,19 @@ public class TestRegistAction extends Action {
 		}
 
 		// 検索
-		if (entYear != 0 && classNum != null && subject != null && count != 0) {
-			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
-			req.setAttribute("testlist", testlist);
-		} else if (entYear == 0 && classNum == null && subject == null && count == 0) {
+		if (entYear == 0 && classNum == null && subject == null && count == 0) {
 
+		} else if (entYear != 0 && !(classNum.equals("0")) && !(subject.equals("0")) && count != 0) {
+			//テストリスト
+			List<Test>testlist = testDao.filter(entYear, classNum, subjectDao.get(subject, teacherSchool), count, teacherSchool);
+			//科目名
+			String subject_name = subjectDao.get(subject, teacherSchool).getName();
+			//リクエストに検索結果をセット
+			req.setAttribute("testlist", testlist);
+			//リクエストに科目名をセット
+			req.setAttribute("subject_name", subject_name);
 		} else {
-			errors.put("1", "入学年度とクラスと科目と回数を選択してください");
+			errors.put("a", "入学年度とクラスと科目と回数を選択してください");
 			req.setAttribute("errors", errors);
 		}
 

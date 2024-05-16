@@ -46,7 +46,7 @@
 						<select class="form-select" id="student-f2-select" name="f3">
 							<option value="0">--------</option>
 							<c:forEach var="subject" items="${list }">
-								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
+								<%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
 								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.name }</option>
 							</c:forEach>
 						</select>
@@ -57,7 +57,7 @@
 						<select class="form-select" id="student-f2-select" name="f4">
 							<option value="0">--------</option>
 							<c:forEach var="num" items="${countList }">
-								<%-- 現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
+								<%-- 現在のnumと選択されていたf4が一致していた場合selectedを追記 --%>
 								<option value="${num }" <c:if test="${num==f4 }">selected</c:if>>${num }</option>
 							</c:forEach>
 						</select>
@@ -66,45 +66,42 @@
 					<div class="col-2 text-center">
 						<button class="btn btn-secondary" id="filter-button">検索</button>
 					</div>
-					<div class="mt-2 text-warning">${errors.get("1") }</div>
+					<div class="mt-2 text-warning">${errors.get("a") }</div>
 				</div>
 			</form>
 
-			<c:choose>
-				<c:when test="${testlist.size()>0 }">
-					<div>科目：${f3 }（${f4 }回）</div>
-					<!-- 表示するテーブルの作成 -->
-					<table class="table table-hover">
-						<tr>
-							<th>入学年度</th>
-							<th class="text-center">クラス</th>
-							<th>学生番号</th>
-							<th>氏名</th>
-							<th>点数</th>
-							<th></th>
-							<th></th>
-						</tr>
-						<c:forEach var="student" items="${students }">
+			<form action="TestRegistExecute.action" method="get">
+				<c:choose>
+					<c:when test="${testlist.size()>0 }">
+						<div>科目：${subject_name }（${f4 }回）</div>
+						<!-- 表示するテーブルの作成 -->
+						<table class="table table-hover">
 							<tr>
-								<td>${student.entYear }</td> <!-- 入学年度 -->
-								<td>${test.no }</td> <!-- クラス -->
-								<td>${test.student_no }</td> <!-- 学生番号 -->
-								<td>${student.name }</td> <!-- 氏名 -->
-								<td><input type="text" value="${test.point }"></td> <!-- 得点 -->
-								<td>
-								<div class="">
-								<label for="point_${学生番号} ">得点</label>
-								<input type="text" id="point_${学生番号} " name="point_${学生番号} "  />
-								</div>
-								</td>
+								<th>入学年度</th>
+								<th>クラス</th>
+								<th>学生番号</th>
+								<th>氏名</th>
+								<th>点数</th>
 							</tr>
-						</c:forEach>
-					</table>
-					<div class="col-2 text-center">
-						<button class="btn btn-secondary" id="filter-button">登録して終了</button>
-					</div>
-				</c:when>
-			</c:choose>
+							<c:forEach var="test" items="${testlist }" varStatus="st">
+								<tr>
+									<td>${test.student.entYear }</td> <!-- 入学年度 -->
+									<td>${test.classNum }</td> <!-- クラス -->
+									<td>${test.student.no }</td> <!-- 学生番号 -->
+									<td>${test.student.name }</td> <!-- 氏名 -->
+									<td><input type="text" name="point_${test.student.no }"<c:if test="${test.no != 0}">value="${test.point }"</c:if> value=""><div class="mt-2 text-warning">${errors.get(st.count) }</div></td> <!-- 得点 -->
+								</tr>
+								<input type="hidden" name="regist" value="${test.student.no }">
+							</c:forEach>
+						</table>
+						<input type="hidden" name="count" value="${f4 }">
+						<input type="hidden" name="subject" value="${f3 }">
+						<div class="col-2 text-center">
+							<button class="btn btn-secondary" id="filter-button">登録して終了</button>
+						</div>
+					</c:when>
+				</c:choose>
+			</form>
 		</section>
 	</c:param>
 </c:import>
