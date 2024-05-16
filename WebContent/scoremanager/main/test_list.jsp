@@ -13,11 +13,11 @@
 		<section class="me=4">
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
 
-			<form method="get">
-				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+			<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+				<form method="get">
 
 					<div class="col-2">
-					<p>科目情報</p>
+						<p>科目情報</p>
 					</div>
 
 					<div class="col-2">
@@ -30,7 +30,6 @@
 							</c:forEach>
 						</select>
 					</div>
-
 					<div class="col-2">
 						<label class="form-label" for="student-f2-select">クラス</label>
 						<select class="form-select" id="student-f2-select" name="f2">
@@ -58,11 +57,13 @@
 						<button class="btn btn-secondary" id="subject-button">検索</button>
 					</div>
 					<div class="mt-2 text-warning">${errors.get("f1") }</div>
+				</form>
 
-					<hr>
+				<hr>
 
+				<form method="get">
 					<div class="col-2">
-					<p>学生情報</p>
+						<p>学生情報</p>
 					</div>
 
 					<div class="col-4">
@@ -77,8 +78,8 @@
 						<button class="btn btn-secondary" id="student-button">検索</button>
 					</div>
 
-				</div>
-			</form>
+				</form>
+			</div>
 
 			<p>
 				<font color="5accf2">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
