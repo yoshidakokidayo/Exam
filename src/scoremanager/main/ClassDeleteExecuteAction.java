@@ -31,7 +31,7 @@ public class ClassDeleteExecuteAction extends Action {
 		//ビジネスロック4
 
 		//subjectに科目情報をセット
-		classnum.setClass_num(class_num);;
+		classnum.setClass_num(class_num);
 		classnum.setSchool(teacher.getSchool());
 
 		//削除
