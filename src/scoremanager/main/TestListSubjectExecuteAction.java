@@ -70,9 +70,6 @@ public class TestListSubjectExecuteAction extends Action {
 			entYearSet.add(i);
 		}
 
-		// ビジネスロジック4
-		// なし
-
 		// レスポンス値をセット6
 		// リクエストに入学年度をセット
 		req.setAttribute("f1", entYear);
