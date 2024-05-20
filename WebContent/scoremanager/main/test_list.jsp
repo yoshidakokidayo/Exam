@@ -13,10 +13,9 @@
 		<section class="me=4">
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">成績参照</h2>
 
-			<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
-				<form method="get">
-
-					<div class="col-2">
+			<form action="TestListSubjectExecute.action" method="get">
+				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+					<div class="col-2" style="text-align:center">
 						<p>科目情報</p>
 					</div>
 
@@ -24,12 +23,13 @@
 						<label class="form-label" for="subject-f1-select">入学年度</label>
 						<select class="form-select" id="subject-f1-select" name="f1">
 							<option value="0">--------</option>
-							<c:forEach var="year" items="${ent_year_set }">
+							<c:forEach var="year" items="${entYearSet }">
 								<%-- 現在のyearと選択されていたf1が一致していた場合selectedを追記 --%>
 								<option value="${year }" <c:if test="${year==f1 }">selected</c:if>>${year }</option>
 							</c:forEach>
 						</select>
 					</div>
+
 					<div class="col-2">
 						<label class="form-label" for="student-f2-select">クラス</label>
 						<select class="form-select" id="student-f2-select" name="f2">
@@ -42,12 +42,12 @@
 					</div>
 
 					<div class="col-4">
-						<label class="form-label" for="student-f3-select">科目</label>
-						<select class="form-select" id="student-f3-select" name="f3">
+						<label class="form-label" for="student-f2-select">科目</label>
+						<select class="form-select" id="student-f2-select" name="f3">
 							<option value="0">--------</option>
-							<c:forEach var="subject.cd" items="${list } ">
+							<c:forEach var="subject" items="${list }">
 								<%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
-								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.cd }</option>
+								<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.name }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -56,13 +56,13 @@
 					<input type="hidden" name="f" value="sj">
 						<button class="btn btn-secondary" id="subject-button">検索</button>
 					</div>
-					<div class="mt-2 text-warning">${errors.get("f1") }</div>
-				</form>
+					<div class="mt-2 text-warning">${errors.get("1") }</div>
+				</div>
+			</form>
 
-				<hr>
-
-				<form method="get">
-					<div class="col-2">
+			<form action="TestListStudentExecute.action" method="get">
+				<div class="row border mx-3 mb-3 py-2 align-items-center rounded" id="filter">
+					<div class="col-2" style="text-align:center">
 						<p>学生情報</p>
 					</div>
 
@@ -77,17 +77,13 @@
 						<input type="hidden" name="f" value="st">
 						<button class="btn btn-secondary" id="student-button">検索</button>
 					</div>
-
-				</form>
-			</div>
+				</div>
+			</form>
 
 			<p>
 				<font color="5accf2">科目情報を選択または学生情報を入力して検索ボタンをクリックしてください
 				</font>
 			</p>
-
-
-
-			</section>
+		</section>
 	</c:param>
 </c:import>

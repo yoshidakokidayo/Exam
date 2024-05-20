@@ -13,7 +13,7 @@ import bean.TestListSubject;
 
 public class TestListSubjectDao extends Dao {
 
-	private String baseSql = "select student.ent_year, test.student_no, student.name, test.class_num, test.no, test.point from test";
+	private String baseSql = "select student.ent_year, student.no, student.name, student.class_num, a.no as no1, a.point as point1, b.no as no2, b.point as point2";
 
 	private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
 
@@ -26,10 +26,16 @@ public class TestListSubjectDao extends Dao {
 				TestListSubject tls = new TestListSubject();
 				// 科目別リストインスタンスに検索結果をセット
 				tls.setEntYear(rSet.getInt("ent_year"));
-				tls.setStudentNo(rSet.getString("student_no"));
+				tls.setStudentNo(rSet.getString("no"));
 				tls.setStudentName(rSet.getString("name"));
 				tls.setClassNum(rSet.getString("class_num"));
-				tls.putPoint(rSet.getInt("no"), rSet.getInt("point"));
+				tls.putPoint(rSet.getInt("no1"), rSet.getInt("point1"));
+				if (rSet.getInt("no2") != 0) {
+					tls.putPoint(rSet.getInt("no2"), rSet.getInt("point2"));
+				} else {
+					tls.putPoint(2, -1);
+				}
+
 				// リストに追加
 				list.add(tls);
 			}
@@ -50,16 +56,20 @@ public class TestListSubjectDao extends Dao {
 		PreparedStatement statement = null;
 		// リザルトセット
 		ResultSet rSet = null;
+		// SQL文の参照テーブル
+		String from = " from (select test.student_no, test.subject_cd, test.school_cd, test.no, test.point, test.class_num from test join student on test.student_no = student.no where student.ent_year = ? and subject_cd = ? and test.class_num = ? and test.school_cd = ? and test.no = 1 order by test.student_no) as a";
 		// SQL文の結合
-		String join = "join student on test.student_no = student.no";
+		String join = " left join (select test.student_no, test.subject_cd, test.school_cd, test.no, test.point, test.class_num from test join student on test.student_no = student.no where student.ent_year = ? and subject_cd = ? and test.class_num = ? and test.school_cd = ? and test.no = 2 order by test.student_no) as b";
 		// SQL文の条件
-		String condition = "where student.ent_year = ? and test.subject_cd = ? and test.class_num = ? and test.school_cd = ?";
+		String condition = " on a.student_no = b.student_no and a.subject_cd = b.subject_cd and a.class_num = b.class_num";
+		// SQL文の結合2
+		String join2 = " join student on a.student_no = student.no";
 		// SQL文のソート
-		String order = "order by test.student_no asc, test.no adc";
+		String order = " order by a.student_no asc, a.no asc";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement(baseSql + join + condition + order);
+			statement = connection.prepareStatement(baseSql + from + join + condition + join2 + order);
 			// プリペアードステートメントに入学年度をバインド
 			statement.setInt(1, entYear);
 			// プリペアードステートメントに科目番号をバインド
@@ -68,6 +78,11 @@ public class TestListSubjectDao extends Dao {
 			statement.setString(3, classNum);
 			// プリペアードステートメントに学校コードをバインド
 			statement.setString(4, school.getCd());
+			// 同じ順番でバインド
+			statement.setInt(5, entYear);
+			statement.setString(6, subject.getCd());
+			statement.setString(7, classNum);
+			statement.setString(8, school.getCd());
 			// プリペアードステートメントを実行
 			rSet = statement.executeQuery();
 			// リストへの格納処理を実行

@@ -9,7 +9,7 @@ import java.util.Map;
 public class TestListSubject implements Serializable {
 
 	/**
-	 * 何年生：int
+	 * 入学年度：int
 	 */
 	private int entYear;
 
@@ -29,7 +29,7 @@ public class TestListSubject implements Serializable {
 	private String classNum;
 
 	/**
-	 * クラス：Map<integer,integer>
+	 * 回数とその得点：Map<integer,integer>
 	 */
 	private Map<Integer,Integer> points=new HashMap<>();
 
@@ -100,12 +100,21 @@ public class TestListSubject implements Serializable {
 	 */
 	public void putPoint(int key, int value) {
 
-		// Mapの初期化
-		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		// mapにテスト回数と点数を格納
-		map.put(key, value);
-		// pointsフィールドにセット
-		setPoints(map);
+		if (key == 1) { // 1回目の点数格納
+			// Mapの初期化
+			Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+			// mapにテスト回数と点数を格納
+			map.put(key, value);
+			// pointsフィールドにセット
+			setPoints(map);
+		} else { // 1回目以降の点数格納
+			Map<Integer, Integer>map = getPoints();
+			// mapにテスト回数と点数を格納
+			map.put(key, value);
+			// pointsフィールドにセット
+			setPoints(map);
+		}
+
 	}
 
 
