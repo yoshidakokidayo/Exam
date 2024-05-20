@@ -12,7 +12,7 @@
 	<c:param name="content">
 		<section class="me=4">
 			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">クラス管理</h2>
-			<form action="SubjectList.action" method="get">
+			<form action="ClassList.action" method="get">
 				<!-- クラス登録画面に遷移 -->
 				<div class="my-2 text-end px-4">
 					<a href="ClassCreate.action">新規登録</a>
@@ -25,7 +25,7 @@
 						<th></th>
 					</tr>
 
-					<c:forEach var="class_num" items="${class_num }">
+					<c:forEach var="class_num_list" items="${class_num_list }">
 						<tr>
 							<td>${class_num.class_num }</td>
 							<td><a href="ClassUpdate.action?cd=${class_num.class_num }">変更</a></td>
