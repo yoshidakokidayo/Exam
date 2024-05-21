@@ -14,7 +14,6 @@ public class ClassListAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO 自動生成されたメソッド・スタブ
 
 		//ローカル変数1
 		HttpSession session = req.getSession(); // セッション
@@ -23,7 +22,6 @@ public class ClassListAction extends Action {
 
 		//DBからデータ取得3
 		List<String>list = cnDao.filter(teacher.getSchool());
-
 		//レスポンス値をセット6
 		req.setAttribute("list", list);
 

@@ -34,7 +34,7 @@ public class ClassDeleteAction extends Action {
 
 		// レスポンス値をセット 6
 		// リクエストに科目コードをセット
-		req.setAttribute("subject_cd", class_num);
+		req.setAttribute("class_num", class_num);
 		// リクエストに科目名をセット
 
 		// JSPへフォワード 7
