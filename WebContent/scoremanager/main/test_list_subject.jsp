@@ -100,16 +100,7 @@
 								<td>${test.classNum }</td>
 								<td>${test.studentNo }</td>
 								<td>${test.studentName }</td>
-								<td>
-									<c:choose>
-										<c:when test="${test.getPoint(1) != null }">
-											${test.getPoint(1) }
-										</c:when>
-										<c:otherwise>
-											-
-										</c:otherwise>
-									</c:choose>
-								</td>
+								<td>${test.getPoint(1) }</td>
 								<td>
 									<c:choose>
 										<c:when test="${test.getPoint(2) != -1}">

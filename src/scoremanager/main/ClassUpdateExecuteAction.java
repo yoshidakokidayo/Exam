@@ -1,5 +1,8 @@
 package scoremanager.main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,30 +22,43 @@ public class ClassUpdateExecuteAction extends Action {
 		HttpSession session = req.getSession(); // セッション
 		Teacher teacher = (Teacher)session.getAttribute("user");
 		String class_num = "" ;
-		ClassNum classnum= new ClassNum();
-		ClassNumDao classnumDao = new ClassNumDao ();
+		String old_class_num = "";
+		ClassNum classNum= new ClassNum();
+		ClassNumDao cnDao = new ClassNumDao ();
+		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		//リクエストパラメーターの取得2
 		class_num = req.getParameter("class_num");
+		old_class_num = req.getParameter("old_class_num");
 
 		//DBからデータ取得3
 		//なし
 
 		//ビジネスロック4
-
-		//subjectに科目情報をセット
-		classnum.setClass_num(class_num);;
-		classnum.setSchool(teacher.getSchool());
-
-		//変更内容を保存
-		classnumDao.save(classnum);
+		if (cnDao.get(class_num, teacher.getSchool()) != null) { // クラス番号が重複している場合
+			errors.put("1", "クラス番号が重複しています");
+			// リクエストにエラーメッセージをセット
+			req.setAttribute("errors", errors);
+		} else {
+			// classNumにセット
+			classNum.setClass_num(old_class_num);
+			classNum.setSchool(teacher.getSchool());
+			// saveメソッドで情報を登録
+			cnDao.save(classNum, class_num);
+		}
 
 		//レスポンス値をセット6
-		//なし
+		req.setAttribute("class_num", class_num);
+		req.setAttribute("old_class_num", old_class_num);
 
-		//jspへフォワード
-		req.getRequestDispatcher("class_update_done.jsp").forward(req, res);
-
+		//jspへフォワード7
+		if (errors.isEmpty()) { // エラーメッセージがない場合
+			// 登録完了画面にフォワード
+			req.getRequestDispatcher("class_update_done.jsp").forward(req, res);
+		} else { // エラーメッセージがある場合
+			// 登録画面にフォワード
+			req.getRequestDispatcher("class_update.jsp").forward(req, res);
+		}
 	}
 
 }

@@ -23,7 +23,7 @@ public class ClassCreateExecuteAction extends Action {
 		Teacher teacher = (Teacher)session.getAttribute("user");
 		String class_num = ""; //入力されたクラス名
 		ClassNum classNum = new ClassNum();
-		ClassNumDao classDao = new ClassNumDao();
+		ClassNumDao cnDao = new ClassNumDao();
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
 		//リクエストパラメーターの取得2
@@ -33,6 +33,17 @@ public class ClassCreateExecuteAction extends Action {
 		// なし
 
 		// ビジネスロック4
+		if (cnDao.get(class_num , teacher.getSchool()) != null) { // クラス番号が重複している場合
+			errors.put("1", "クラス番号が重複しています");
+			// リクエストにエラーメッセージをセット
+			req.setAttribute("errors", errors);
+		} else {
+			// classNumにセット
+			classNum.setClass_num(class_num);
+			classNum.setSchool(teacher.getSchool());
+			// saveメソッドで情報を登録
+			cnDao.save(classNum);
+		}
 
 		// レスポンス値をセット 6
 		// リクエストに科目コードをセット
@@ -41,11 +52,10 @@ public class ClassCreateExecuteAction extends Action {
 		// JSPへフォワード 7
 		if (errors.isEmpty()) { // エラーメッセージがない場合
 			// 登録完了画面にフォワード
-			req.getRequestDispatcher("Class_create_done.jsp").forward(req, res);
+			req.getRequestDispatcher("class_create_done.jsp").forward(req, res);
 		} else { // エラーメッセージがある場合
 			// 登録画面にフォワード
-			req.getRequestDispatcher("ClassCreate.action").forward(req, res);
-
+			req.getRequestDispatcher("class_create.jsp").forward(req, res);
 		}
 
 	}

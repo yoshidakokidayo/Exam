@@ -22,14 +22,12 @@
 					<tr>
 						<th>クラス名</th>
 						<th></th>
-						<th></th>
 					</tr>
 
-					<c:forEach var="class_num" items="${class_num }">
+					<c:forEach var="class_num" items="${list }">
 						<tr>
-							<td>${class_num.class_num }</td>
-							<td><a href="ClassUpdate.action?cd=${class_num.class_num }">変更</a></td>
-							<td><a href="ClassDelete.action?cd=${class_num.class_num }">削除</a></td>
+							<td>${class_num }</td>
+							<td><a href="ClassUpdate.action?class_num=${class_num }">変更</a></td>
 						</tr>
 					</c:forEach>
 				</table>

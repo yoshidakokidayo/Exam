@@ -85,7 +85,7 @@ public class TestListSubject implements Serializable {
 	 */
 	public String getPoint(int key) {
 
-		// Mapの初期化
+		// Mapインスタンスの初期化
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		// pointsフィールドから値をゲット
 		map = getPoints();
@@ -100,20 +100,14 @@ public class TestListSubject implements Serializable {
 	 */
 	public void putPoint(int key, int value) {
 
-		if (key == 1) { // 1回目の点数格納
-			// Mapの初期化
-			Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-			// mapにテスト回数と点数を格納
-			map.put(key, value);
-			// pointsフィールドにセット
-			setPoints(map);
-		} else { // 1回目以降の点数格納
-			Map<Integer, Integer>map = getPoints();
-			// mapにテスト回数と点数を格納
-			map.put(key, value);
-			// pointsフィールドにセット
-			setPoints(map);
-		}
+		// Mapインスタンスの初期化
+		Map<Integer, Integer>map = new HashMap<Integer, Integer>();
+		// pointsフィールドから値をゲット
+		map = getPoints();
+		// mapにテスト回数と点数を格納
+		map.put(key, value);
+		// pointsフィールドにセット
+		setPoints(map);
 
 	}
 
