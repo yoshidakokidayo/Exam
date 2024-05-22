@@ -1,4 +1,4 @@
-<!-- クラス登録JSP --><!--  -->
+<!-- クラス登録JSP -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,9 +15,9 @@
 			<form action="ClassCreateExecute.action" method="get">
 
 				<div>
-					<label for="class_num">クラス名</label><br>
+					<label for="class_num">クラス番号</label><br>
 					<input class="form-control" type="text" name="class_num" id="class_num" value="${class_num }"
-					required maxlength="3" placeholder="クラス名を入力してください" />
+					required maxlength="3" placeholder="クラス番号を入力してください" />
 				</div>
 				<div class="mt-2 text-warning">${errors.get("1") }</div>
 
